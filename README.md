@@ -303,8 +303,290 @@ Comparing the bones, they're pretty close already. In fact, Alf's bones are even
 
 <img width="1063" height="629" alt="img40_neckhead" src="https://github.com/user-attachments/assets/b904d91b-ecf2-4c0d-b84f-4040c3a3447a" />
 
+Go ahead and rename them to their uppercase versions, "Neck" and "Head".
+
+<img width="635" height="434" alt="img41_rename_neckhead" src="https://github.com/user-attachments/assets/6931a61a-a7b8-43f3-923f-35fa649bae2e" />
+
+I checked, and the Neck bends fine where it's at. We should move the head though, so move the Head bone so it lines up over Marth's joint.
+
+<img width="1068" height="642" alt="img42_gif_movehead" src="https://github.com/user-attachments/assets/43d9e340-25b1-4917-b172-2a3e8f18bf50" />
+
+At this point, Alf's model is scaled perfectly over Marth's skeleton! Or at least, perfect enough for Smash (close is close enough, remember?) 
+
+And we've renamed as many of the bones as we could find that match!
+
+<img width="1023" height="634" alt="img43_allscaled" src="https://github.com/user-attachments/assets/4e2dacae-cd8d-4a56-a428-2b4b7798a7ae" />
+
+The thing about Blender poses is that they're not permanent changes right away. If you deleted the Alf armature, he'd snap right back into the position he was when we started.
+
+To commit these changes to his Meshes, we need to Apply the Armature Modifier.
+
+Before you continue, *you should save your Blender file as a new one to make a backup*, in case you mess up. I typically just add a new number at the end of the filename (2, 3, 4...)
+
+Select the "AlfMain" Mesh in Object Mode to start, then find his Armature Modifier in the properties menu.
+
+We still want him to HAVE an Armature Modifier when we commit the pose, so hover your mouse over his Armature Modifier and press Shift+D (or press the [V] dropdown -> Duplicate). This duplicates the modifier. Alf will suddenly lift his arms into the air if you did it right!
+
+<img width="1046" height="848" alt="img44_dupe" src="https://github.com/user-attachments/assets/22ad5b2c-7f9a-4228-a255-fa2641bf64c1" />
+
+Hover your mouse over the top modifier (or bottom, doesn't matter) and press Ctrl+A (or [V]->Apply) to Apply the modifier. 
+
+<img width="1067" height="856" alt="img45_applytop" src="https://github.com/user-attachments/assets/a35ef4a6-2cb4-4034-8edc-e165c34295b3" />
+
+Do this same process for all four of Alf's Meshes, until he looks like this:
+Each should now have only one Armature Modifier.
+
+<img width="1055" height="625" alt="img46_repeatapply" src="https://github.com/user-attachments/assets/6acff5d0-250b-44e7-ac99-783a3e07975d" />
+
+This dupilicate+apply process permanently commits the changes you've made to the Mesh from the pose. If you deleted the armature now, Alf would stay in his T-pose. 
+
+Do this dupe-apply process anytime you want to make permanent changes to the Mesh via Pose Mode.
+
+Alf still has his arms raised because he's still "posed" in Pose Mode. To make his current pose the "unchanged" pose, select Alf's armature, enter Pose Mode, press A to select all bones, then Ctrl+A -> Apply Pose as Rest Pose. Alf will suddenly snap into a T-pose if you did it right.
+
+<img width="935" height="571" alt="img47_applied" src="https://github.com/user-attachments/assets/4a173017-f421-479f-a100-340f474d6009" />
+
+We're all done posing Alf and renaming his bones, so it's time to parent him to the Smash armature. Click the smush_blender_import orange stickman armature, shift+click all of Alf's Meshes, then Ctrl+P -> Object (Keep Transform) to parent.
+
+<img width="1068" height="627" alt="img48_gif_parenting" src="https://github.com/user-attachments/assets/d577c979-1157-46f6-a051-e3198d8bb3e8" />
+
+Next, we need his Armature Modifiers to pointed to the Smash armature. Go into the modifier for each Mesh and point Object to smush_blender_import.
+
+<img width="711" height="756" alt="img49_repoint" src="https://github.com/user-attachments/assets/807cd47c-1028-488e-8035-8d0ce1728755" />
+
+Since we've renamed Alf's bones to Marth's most of the Mesh should be waited. Alf did have some bones that *don't* have equivalents on the Smash armature, so they aren't weighted to anything yet. Alf's hair, for examples, has a bunch of bones that let the hair swing in Arc Rise Fantasia, but Marth's hair has completely different bones. They aren't in the same places, so we couldn't rename them to use them.
+
+All that say, we need to see what on Alf's model is not weighted to Smash bones yet.
+
+Like the last tutorial, enter Pose Mode and move the Hip bone back a ways. Everything that's weighted will move, anything that isn't will stay put.
+
+<img width="834" height="751" alt="img50_movehip" src="https://github.com/user-attachments/assets/da2fcd03-cd97-44ea-9e42-a90f58a03057" />
+
+Our job now is to weight all the vertices that haven't been weighted yet.
+Let's start with Alf's head!
+
+Select the AlfMain Mesh, enter Edit Mode, and turn on the Vertex selection mask (upper left icon, circled on the image. Also, turn on the Transparency viewport mode (upper right, circled icon).
+
+Then, drag a box around all vertices that are sticking out from Alf's head:
+
+<img width="1520" height="765" alt="img51_selectverts" src="https://github.com/user-attachments/assets/f7553cac-7d76-42ab-995a-bb33b10562ae" />
+
+With the vertices selected, enter Weight Paint mode. Turn on the Vertex selection mask icon (upper left), which will turn all your selected Vertices white. Make sure the Weight setting is 1.0, too.
+
+Open up the list of Vertex Groups for the Mesh to find and select Head.
+
+<img width="1171" height="612" alt="img52_selectionmask" src="https://github.com/user-attachments/assets/c6bbda4d-9fbc-4431-abe3-0bc9daaffeec" />
+
+Press Ctrl+x, then all those vertices will snap to his head. They're weighted!
+
+<img width="742" height="622" alt="img53_weightedhead" src="https://github.com/user-attachments/assets/c832a778-66ef-439c-8e44-0f5c9b8f2601" />
+
+We need to do the same exact thing, but with his arms now.
+
+Select the vertices that are missing from his left arm, then weight all of them to ArmL. Do the same thing with Alf's right arm and ArmR.
+
+<img width="748" height="665" alt="img54_getarm" src="https://github.com/user-attachments/assets/caa6f537-531c-4eca-a53f-e3e5f455e84c" />
+
+<img width="821" height="604" alt="img55_weightedarm" src="https://github.com/user-attachments/assets/631e4b49-d767-4c3f-b091-2b09bf267a9a" />
+
+And last, we have Alf's coattails. We COULD weight them simply to LegL, LegR, or Hip, but they'd look weird or stiff. 
+
+<img width="821" height="474" alt="img56_noskirt" src="https://github.com/user-attachments/assets/c5fdfb6d-1b59-4a82-8851-8b15c5f5035d" />
+
+You see, Smash Bros armatures sometimes have things called "Swing Bones". You know they're swing bones because they're blue, and all Swing bones must have names that begin with "S_". Swing bones, well, swing in-game, used for things like skirts, long hair, or tails. Unless you're adding new Swing Bones, you can basically treat Swing Bones as identical to normal bones.
+
+Lucky for us, Marth has some Swing Bones that let the "skirt" of his tunic move. 
+
+<img width="773" height="736" alt="img57_swingbones" src="https://github.com/user-attachments/assets/9258b864-8da0-4a47-a895-288023d2fe56" />
+
+They're also in roughly the same place where Alf has his own "coat swing bones". We can re-use the weight from those Alf bones for Marth's Swing Bones.
+
+<img width="707" height="606" alt="img58_alfswing" src="https://github.com/user-attachments/assets/a03ad176-5fd8-48de-a03d-7e812aabb46b" />
+
+We really should have just renamed Alf's coat bones when we were doing the rest, but...
+...well, you see, I forgot. :(
+
+No matter! This lets me teach you even more techniques!
+
+You can rename the Vertex Groups directly on the Mesh, and it's just like renaming the bones.
+(We rename the bones first because that renames the Vertex Groups for ALL meshes automatically)
+
+Scroll down the list of Vertex Groups for Alf and you'll see the weight and VGs for his coat bones are all still there.
+
+<img width="1164" height="707" alt="img59_leftovers" src="https://github.com/user-attachments/assets/20f9e817-80d8-464a-947c-32fdebe9ccb6" />
+
+To save time, I'll just tell you which Vertex Groups need to be renamed to what. 
+On the left is the Alf Vertex Group, and on the right is what you rename it to.
+Notice we're leaving two of them alone.
 
 
+L_B_skirt_a -> S_ShirttailBL1
+L_B_skirt_b -> S_ShirttailBL2
+L_B_skirt_c (leave this alone for now)
+
+L_F_skirt_a -> S_ShirttailFL1
+L_F_skirt_b -> S_ShirttailFL2
+
+R_B_skirt_a -> S_ShirttailBR1
+R_B_skirt_b -> S_ShirttailBR2
+R_B_skirt_c (leave this alone for now)
+
+R_F_skirt_a -> S_ShirttailFR1
+R_F_skirt_b -> S_ShirttailFR2
+
+As you rename them, you should see parts of Alf's coat snap over to the rest of him. Again, it's because they are now weighted to Marth bones.
+
+<img width="765" height="650" alt="img60_renamed_leftovers" src="https://github.com/user-attachments/assets/4e820d37-c16c-4714-b982-82706826bf6c" />
+
+There's two little vertices on the ends of his coat that didn't get moved over. 
+
+Select them in Edit Mode and weight them to S_ShirttailBR2 and S_ShirttailBL2 for their respective sides.
+
+<img width="895" height="658" alt="img61_weightends2" src="https://github.com/user-attachments/assets/b83e2dce-9f92-4e8b-a0eb-824ad03c62c7" />
+
+<img width="813" height="570" alt="img62_weightends3" src="https://github.com/user-attachments/assets/6fb6b709-73ad-4158-a62a-c371e67fb0ac" />
+
+There's one more trick we're going to use.
+
+The sides of Alf's coattails aren't weighted yet, but Marth doesn't have any Swing Bones on the sides. So, what we'll do instead is add the weight from Alf's side bones to the front Swing Bones.
+
+We do this by adding another modifier (like Armature Modifier) called Vertex Weight Mix.
+Add just in the modifiers by clicking [Add Modifier] -> Edit -> Vertex Weight Mix.
+
+<img width="838" height="809" alt="img63_vertexmix" src="https://github.com/user-attachments/assets/9e2f49d4-52f0-44d0-96de-3335758a15ed" />
+
+This modifer adds the weights from Vertex Group B to Vertex Group A. In the screenshot, you'll notice A is set to the Marth front-left swing bone (S_ShirttailFL1), and B is Alf's old side coat bone (L_S_skirt_a).
+
+The other two things I've set are Vertex Set to All and Mix Mode to Add. When you set these, you'll see part of Alf's coat jump back over to Alf.
+
+Hover anywhere in the box and press Ctrl+A to apply, or press [v] > Apply to commit the changes to the weighting.
+
+When done, it should look like this:
+
+<img width="774" height="855" alt="img64_applied" src="https://github.com/user-attachments/assets/29915076-fa0f-4568-935d-a695111a5bcc" />
+
+Go ahead and do the same thing for S_ShirttailBL2 and L_S_skirt_b as below:
+
+Repeat the process also for Alf's right side, ShirttailBL1/2, R_S_skirt_a/b.
+
+<img width="805" height="628" alt="img65_nextmix" src="https://github.com/user-attachments/assets/310bcf96-6780-4fbb-8412-2183dd2babe4" />
+
+When you're finished with both sides, you'll see just this one spot left unweighted on Alf:
+
+<img width="913" height="724" alt="img66_allmixed" src="https://github.com/user-attachments/assets/4035856c-0e8f-4582-863c-035839bc5727" />
+
+We could just weight those vertices to Hip. However, I'll use this chance to tell you about the Smash bone LegC. LegC is basically the same thing as Hip, but I think it's supposed to control the legs rather than the whole Mesh. I've never seen the two bones used differently. You can usually just ignore LegC, but in this case we can use it to our advantage.
+
+In AlfMain's Vertex Groups, find the lowercase "hip" entry.
+
+<img width="728" height="843" alt="img67_oldhip" src="https://github.com/user-attachments/assets/d92c1b8f-45f8-450d-b3cb-9fbd26fe8270" />
+
+Rename that bone to "LegC", and it should weight most of it. There may be some vertices left unweighted, so just go ahead and weight them to LegC as well.
+
+<img width="741" height="503" alt="img68_legc" src="https://github.com/user-attachments/assets/c78666b7-ad4c-4df0-ac78-a00637febbdb" />
+
+<img width="714" height="460" alt="img69_weightagain" src="https://github.com/user-attachments/assets/b2fd1fd1-1e00-43da-b170-e73c11c6bcdd" />
+
+And with that, we've weighted all of Alf's body! Hurray!
+
+<img width="432" height="736" alt="img70_weightedbody" src="https://github.com/user-attachments/assets/b2cfc7ad-6074-4f1a-93fd-6bf51b5185ab" />
+
+Now, for his sword, and more importantly, its name.
+
+You see, by default, any Meshes that don't use vanilla Smash Mesh names (i.e. all the ones we've added so far), will always be present on the Mesh.
+
+This means that, with the sword being named "AlfSword", it'll always be on his model at all times, even when he's clapping or holding something else. And we don't want that!
+
+What we'll do is rename Alf's sword Mesh so that it has the exact same name as Marth's sword Mesh, which will make the game treat it just like Marth's sword.
+
+For the sword in his hand, Marth actually has two Meshes, 
+
+WeaponbladeM_VIS_O_OBJShape and WeapongripM_VIS_O_OBJShape
+
+<img width="815" height="692" alt="img71_marssword" src="https://github.com/user-attachments/assets/e2a62781-3519-45fd-b4ad-648b759a35f9" />
+
+Either name will do. And there's no need memorize the names or anything. I always copy and paste the name from the existing Smash Mesh. You can even copy the names from this tutorial and paste them in.
+
+You can also notice that his sword is weighted to the Sword1 bone.
+
+<img width="871" height="545" alt="img72" src="https://github.com/user-attachments/assets/56d0a8a4-c30c-4773-8efe-13e56eb27de8" />
+
+So go ahead and rename Alf's sword Mesh to either of Marth's names, I chose WeapongripM_VIS_O_OBJShape. Here's a gif of how I do it:
+
+<img width="1031" height="696" alt="img73" src="https://github.com/user-attachments/assets/03d25548-a55f-4273-9c16-c817809c61a5" />
+
+And then weight Alf's sword to Sword1.
+
+<img width="862" height="603" alt="img73_weightsword" src="https://github.com/user-attachments/assets/c3bcade7-12de-4bd8-97ed-2c7b8292d390" />
+
+So Marth also as ANOTHER Mesh for the sword when it's at his side, including a scabbard. Alf came with his own sword and scabbard, so we can easily replace it.
+
+<img width="830" height="748" alt="img74_scabbard" src="https://github.com/user-attachments/assets/1640c825-6f7c-45da-85ca-2b8dc74a4390" />
+
+Move Alf's sword-and-scabbard Meshes so that they're in roughly the same place as Marth's. Perfection isn't important here, just close enough.
+
+<img width="722" height="417" alt="img75_gif_movescab" src="https://github.com/user-attachments/assets/5e863c00-b957-4fa6-91cf-c6bcefcf28f5" />
+
+Rename the "AlfSword2" Mesh to tsuka_VIS_O_OBJShape, and weight it to the Vertex Group "Hilt".
+
+<img width="794" height="650" alt="img76_scabbard" src="https://github.com/user-attachments/assets/0052b667-e4b7-4529-8c29-e50db1c2c8ff" />
+
+Now we're really done! Alf is all weighted! Be sure to reset the pose in Pose Mode if you haven't done so already.
+
+<img width="1012" height="624" alt="img77_alldone" src="https://github.com/user-attachments/assets/f7be84b9-9e09-434f-97bf-940edec695bf" />
+
+Go ahead and convert all the materials on his Meshes, just the same as you've done in the last tutorial. 
+
+<img width="1292" height="842" alt="img78_convertmat" src="https://github.com/user-attachments/assets/0d09496b-6684-4360-90b8-35336ee63e4b" />
+
+Then export the model.
+
+When you do, you're going to run into an (easily resolved) error. It'll look something like this:
+
+<img width="1207" height="791" alt="img79_error" src="https://github.com/user-attachments/assets/36fc8fd6-3969-4304-9250-edca0d0265f2" />
+
+It's telling you that the AlfMain Mesh has "Vertex with more than 4 weights" or whatever. I don't really understand why this is a problem, but the fix is super easy.
+
+Select the AlfMain Mesh and go into Weight Paint mode. Then, press Weights -> Limit Total. A little box should appear in the bottom left corner. Click anywhere in the viewport to close it.
+
+<img width="935" height="729" alt="img80_limitweights" src="https://github.com/user-attachments/assets/a91c4054-7514-491e-86f0-665916a34f86" />
+
+That's it! You fixed it! You should be able to safely export him now, and open the model folder in SSBH.
+
+<img width="1406" height="674" alt="img81_exported" src="https://github.com/user-attachments/assets/bf0e5fc5-2e1a-4da0-bc30-9269afca6e02" />
+
+Now you can tweak Alf's material settings. For simplicity's sake, we'll just have all the material use the same settings. What's "good" for material settings can vary between models.
+
+Pick any material and configure it with the settings like you see here:
+
+<img width="1121" height="1016" alt="img82_mat" src="https://github.com/user-attachments/assets/d752186d-2284-487f-8a67-9edf092a4e06" />
+
+Now, at the top of the window, click Material -> Add Material to Presets. This lets you copy the material settings as a template, so you can easily duplicate the same settings to other materials. 
+
+Then, click on another material in the list, and press Material -> Apply Preset. Another window will appear, press the User tab, and select the material preset you created, then Apply.
+
+<img width="1417" height="452" alt="img83_addpreset" src="https://github.com/user-attachments/assets/b09a967d-93d7-4f48-84ea-69a5d4a1d7de" />
+
+
+Go ahead and do that to all of Alf's materials, and he'll be looking good in a snap!
+
+<img width="1006" height="874" alt="img84_better" src="https://github.com/user-attachments/assets/8bc0dbbd-a46f-4a7f-b7ec-3ccb8c833400" />
+
+And lastly, don't forget the name and config!
+
+Open the mod folder in Smash Ultimate Mod Helper, PRESS THE CREATE CONFIG BUTTON, and then Create PRCXML to set his name up.
+
+<img width="990" height="699" alt="img85_config" src="https://github.com/user-attachments/assets/1ab6dac6-c191-459f-8144-94a94280cc2e" />
+
+And with that, Alf is complete. You can try it out in the game and see how it looks!
+
+_"Now, my revenge will begin."_
+
+<img width="577" height="699" alt="img86" src="https://github.com/user-attachments/assets/d5ab2f49-9933-452b-abeb-5d1f845531b3" />
+
+<img width="724" height="541" alt="img87" src="https://github.com/user-attachments/assets/2881c87a-6fd9-490d-a3e1-d4aa159bdb6e" />
+
+<img width="1266" height="709" alt="img88" src="https://github.com/user-attachments/assets/d9e07f21-3c24-42aa-b094-d02d8f6165b9" />
 
 
 
