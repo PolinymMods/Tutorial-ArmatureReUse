@@ -1,4 +1,4 @@
-<img width="707" height="552" alt="img19_gif_resize" src="https://github.com/user-attachments/assets/9b0d2b0b-0488-4418-afcc-ddf252f399d2" /># How to Rig a Smash Model Using an Existing Armature
+# How to Rig a Smash Model Using an Existing Armature
 
 **Requirements:**
 
@@ -9,7 +9,9 @@ ArcExplorer (Extract model files)
 https://github.com/ScanMountGoat/ArcExplorer/releases/tag/v1.4.5.1
 
 Blender (3d modelling)
+
 (My version) https://download.blender.org/release/Blender4.3/
+
 (Latest) https://www.blender.org/download/
 
 Smash Ultimate Blender Plugin
