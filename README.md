@@ -190,5 +190,122 @@ With both legs done, let's start moving further up on Alf.
 
 <img width="891" height="662" alt="img22_alfhip" src="https://github.com/user-attachments/assets/64e6709d-3c82-4d9d-8470-a8c41e56e01b" />
 
+You may notice that Alf has a bone called "hip", in lowercase. 
+We won't use this bone for his "Hip" bone on Marth for this tutorial, but you could. We'll actually rename the Vertex Group for it directly later to show you how that's done. All that to say, you can ignore it for now.
+
+We're interested in Alf's "spine_a" bone. There's a lot of bones clustered in the hip area, so it'll be easier to find if you look in the list.
+
+<img width="873" height="750" alt="img23_spinea" src="https://github.com/user-attachments/assets/8111c73c-13a7-4ce2-917b-422c94e618b8" />
+
+We'll rename THAT bone to "Hip". That capital H is important, don't forget it!
+
+<img width="703" height="736" alt="img24_hip" src="https://github.com/user-attachments/assets/57e1cfb4-d282-4d96-9622-6a9f80bea986" />
+
+The next bone connected to that one, spine_b, is right around Marth's Waist. So, rename it to "Waist". 
+
+<img width="1071" height="684" alt="img24_waist" src="https://github.com/user-attachments/assets/8fa0a2e3-a04a-4287-9e38-525c797450ff" />
+
+spine_c should be renamed to "Bust".
+
+<img width="1108" height="718" alt="img25_bust" src="https://github.com/user-attachments/assets/1b594f0b-8309-4993-925f-a407361ee064" />
+
+The bone between Alf's chest and left arm equates to Marth's ClavicleL, so rename it.
+
+<img width="1115" height="727" alt="img26_claviclel" src="https://github.com/user-attachments/assets/fab6dbee-ba53-4df1-9d11-f2e023c5e2ec" />
+
+That leads us now to his shoulder joint, which should be "ShoulderL". 
+
+<img width="1003" height="558" alt="img27_shoulderl" src="https://github.com/user-attachments/assets/0605ef64-3ee2-40b6-82c8-f639b0784ac9" />
+
+You may have noticed by now that Alf's model is in an A-pose (his arms pointed down like the letter A), while Marth's is in a T-pose (arms straight out). 
+
+But I do not like that. That's not good, Cecil. 
+
+<img width="782" height="627" alt="img28_apose" src="https://github.com/user-attachments/assets/4a732198-5169-4059-a81e-849a2ca5a7ea" />
+
+We can just pose Alf's armature to fix that!
+
+First, in Pose Mode, grab Alf's shoulder bone and move it up to where Marth's ShoulderL begins.
+
+<img width="947" height="736" alt="img29_0_gif_moveshoulder" src="https://github.com/user-attachments/assets/996b2a65-98dc-48eb-99aa-ee995e70cfed" />
+
+Next, with the same bone selected, use the Rotate tool to bend it so it's straight out just like Marth's. Try to get it as close as you can, but don't sweat it too much. You can hold Ctrl while bending the bone to move it only in specific degree amounts for better control.
+
+<img width="947" height="736" alt="img29_a_gif_movearm" src="https://github.com/user-attachments/assets/87ddc2ad-10a3-4ea6-b00f-526dc72ee824" />
+
+Once his arm is straight out, look down Alf's arm to find the bone where his elbow is. That bone should be renamed "ArmL".
+
+<img width="1152" height="597" alt="img30_arml" src="https://github.com/user-attachments/assets/011495da-6ac7-49f6-accb-374e48891341" />
+
+We'll bone-stretch his ArmL so its joint lines up with Marth's. This time, you can use the Move tool instead of Scale. We want to avoid using scale here because it would also scale his hand and fingers, which we don't want.
+
+<img width="832" height="736" alt="img31_gif_movearm" src="https://github.com/user-attachments/assets/9de31c8b-e814-4c4b-813f-c816ca3cb7b8" />
+
+Look further down Alf's arm to find the bone where his wrist is. Name this one HandL.
+It's already pretty close to Marth's HandL, so we don't need to move it.
+
+<img width="1016" height="434" alt="img31_handl" src="https://github.com/user-attachments/assets/5614a408-31d9-4dd3-a1b5-ef36a61acac1" />
+
+Now we have to talk about fingers. Fingers aren't fun. :(
+
+I mean, they look nice when they work, but your custom model's fingers will be a different size than the Smash fingers nearly every single time. 
+
+It won't exactly be pretty, but we can fix it. 
+
+First up, here's the names for Smash fingers.
+
+<img width="1231" height="698" alt="img32_fingers" src="https://github.com/user-attachments/assets/a1d695b5-8e5c-4af7-ae3b-7824f8269e45" />
+
+Each Smash finger is comprised of three bones.
+So, the index finger is made up of bones Finger11, Finger12, Finger13.
+The pattern is the same for all other fingers, so the pinky finger for example is FingerL41, FingerL42, FingerL43.
+The only difference for the right hand is that it's FingerR11, FingerR12, and FingerR13.
+
+(The "zero" fingers, Finger L10, Finger R20, etc., don't matter. You can hide them on the skeleton and ignore them completely.)
+
+Go ahead and rename all of Alf's fingers so that they match Smash's naming. Yes, even though they don't line up completely yet. We're about to fix that:
+
+<img width="1331" height="718" alt="img33_fingers2" src="https://github.com/user-attachments/assets/89954afb-ee8b-4308-b27c-40c171174b37" />
+
+When you're done, Alf's finger bones should look like this:
+
+<img width="831" height="632" alt="img34_rename_bones" src="https://github.com/user-attachments/assets/56cf4643-7c17-4c07-8219-dfccd72d1927" />
+
+Here's the unpleasant part: Now move all of Alf's finger bones so they line up with the equivalent Marth bones. The Gif below shows me doing it. Use the Rotate tool on the thumb bones. Just try your best to get them as close as you can, but again, don't worry it getting it perfect. You probably won't notice anything wrong in-game.
+
+<img width="464" height="385" alt="img35_gif_movefingers" src="https://github.com/user-attachments/assets/ca138f20-dd23-4f87-8512-6a38ee33129f" />
+
+Your Alf finger bones should end up kinda like this:
+
+<img width="718" height="597" alt="img36_newfingers" src="https://github.com/user-attachments/assets/ac1fe54f-8fde-4cf2-a47a-fbc94c08eaf4" />
+
+In regards to the vertical axis, Alf's bones are pretty close to where Marth's are (pretty close is close enough). 
+
+<img width="662" height="423" alt="img37_yview" src="https://github.com/user-attachments/assets/ed99ed56-0315-41e8-ba69-b4cd68c434f6" />
+
+We should move his thumb, though. Move and rotate the bones like you did from top-down so the joints line up.
+
+<img width="686" height="563" alt="img38_rotate" src="https://github.com/user-attachments/assets/beccc44f-fb0f-4711-bf2b-a7699fbf33d1" />
+
+With that, his left arm should be good to go.
+
+To save space on this tutorial, I won't cover doing the right arm. Just do exactly what you did with the left arm, but use R in the place of all the bones with L in the name. You know the drill!
+
+Again, don't worry about getting his arms perfectly symmetrical. You won't notice if it's wrong. Remember the Smash modding motto:
+
+CLOSE IS CLOSE ENOUGH!
+
+<img width="894" height="634" alt="img39_bothsides" src="https://github.com/user-attachments/assets/234dd20d-d9a2-4ad2-a40d-6eb020b84374" />
+
+Now we can move on to Alf's neck and head.
+
+Comparing the bones, they're pretty close already. In fact, Alf's bones are even named "neck" and "head" in lowercase!
+
+<img width="1063" height="629" alt="img40_neckhead" src="https://github.com/user-attachments/assets/b904d91b-ecf2-4c0d-b84f-4040c3a3447a" />
+
+
+
+
+
 
 
