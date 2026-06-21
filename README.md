@@ -1,2 +1,3 @@
-# Tutorial-ArmatureReUse
-Fast model rigging for SSBU modding
+# How to Rig a Smash Model Using an Existing Armature
+
+
