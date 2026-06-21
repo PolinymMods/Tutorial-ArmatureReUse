@@ -1,4 +1,4 @@
-# How to Rig a Smash Model Using an Existing Armature
+<img width="707" height="552" alt="img19_gif_resize" src="https://github.com/user-attachments/assets/9b0d2b0b-0488-4418-afcc-ddf252f399d2" /># How to Rig a Smash Model Using an Existing Armature
 
 **Requirements:**
 
@@ -124,3 +124,69 @@ Do the same thing to the R_thigh bone on Alf's other leg. Rename it to LegR
 Now let's look at their knee bones. Marth's KneeL bone begins at the little black dot, the joint, circled in green below. Alf's L_leg bone is a bit below that. 
 
 <img width="1044" height="603" alt="img10_compare_knee" src="https://github.com/user-attachments/assets/0d236b32-3099-4e56-a430-c16b10818313" />
+
+Let's go ahead and rename Alf's L_leg bone to KneeL.
+
+<img width="1038" height="603" alt="img11_rename" src="https://github.com/user-attachments/assets/d9e9d1f6-2c01-4727-89aa-1b402c5074b0" />
+
+Even with just two bones renamed, we can now see how Alf's model will bend with the Smash armature this way! Don't believe me? Watch!
+
+Select the "AlfMain" mesh, go to the modifiers menu (little blue wrench, bottom right), and change the Object field to "smush_blender_import". I call this, "repointing", pointing Alf's Armature Modifier to Marth's Armature.
+
+<img width="1043" height="609" alt="img12_repoint_armature" src="https://github.com/user-attachments/assets/333b656f-afea-4339-a5a7-82b14ad6a21c" />
+
+Select Marth's armature, go into Pose Mode, then try bending Marth's LegL and KneeL bones. You'll see Alf's leg and knee bend! Cool!
+The rest of the Mesh doesn't move because it doesn't have any weight for Marth's bones yet.
+
+<img width="1059" height="606" alt="img13_gif_kneetest" src="https://github.com/user-attachments/assets/5a6a9b79-ebbf-4605-971b-a1a03ed84c95" />
+
+Something you'll notice is that Alf's knee bends a little funny. 
+
+<img width="914" height="596" alt="img14_weirdbend" src="https://github.com/user-attachments/assets/416aedb2-649c-4dc6-ad27-cce2362d2a3d" />
+
+See how it's kinda angular near the kneecap? 
+I mean, if it looks fine to you you can leave it, but I don't like it. This is the perfect time for me to teach you the "Bone-Stretching" techinque!
+
+First, make sure you reset the pose, then repoint the Armature Modifier to Alf's armature again.
+
+<img width="1042" height="525" alt="img15_setback" src="https://github.com/user-attachments/assets/d59e1b99-729e-4e68-acc6-249b57ab82e3" />
+
+Also, go ahead and rename Alf's R_leg bone to KneeR while you're at it.
+
+<img width="1031" height="582" alt="img16_kneer" src="https://github.com/user-attachments/assets/69f567af-fc13-42bc-a328-ed69d29fa90d" />
+
+Now, select both Alf's LegL and LegR bones. Either select by dragging a box around them in the viewport, or Ctrl+clicking in the object list.
+
+<img width="1033" height="621" alt="img17_select_legs" src="https://github.com/user-attachments/assets/1132a480-f956-47d8-93b1-511286fc1934" />
+
+Here's the plan: We'll using Bone-Stretching by literally "stretching" Alf's leg bone so that the joint of his knee bone lines up with Marth's. See the below image:
+
+<img width="1020" height="696" alt="img18_moveplan" src="https://github.com/user-attachments/assets/30d930a1-df7e-48ac-988d-3528ca8e64eb" />
+With both upper leg bones selected, select the Scale tool, grab the BLUE axis that appears (ONLY the blue one), and drag that blue axis until Alf's joints are over Marth's:
+
+<img width="707" height="552" alt="img19_gif_resize" src="https://github.com/user-attachments/assets/efe0bc6f-ad6f-4601-989f-4899eed0663c" />
+
+That is Bone Stretching, whenever you move bones like that to change the shape of the model. We used the scale tool here, but you can often just use the Move tool to stretch the bones, which gives better results when it works. Scale is what we want for this particular instance.
+
+You may notice now that Alf's feet no longer touch the "ground". If you were to compare it to Marth's, you'd see the difference:
+
+<img width="840" height="666" alt="img19_noground" src="https://github.com/user-attachments/assets/1bdaf460-1f49-4af3-b94a-d60162fb1f69" />
+
+Before we fix that, let's rename the next bone for Alf's feet: Change the bone below his KneeL to be FootL. Do the same for his right side too, FootR.
+
+<img width="1221" height="710" alt="img20_footl" src="https://github.com/user-attachments/assets/1eebec25-b72a-48ae-a14e-b4635c2c0973" />
+
+Now we'll use bone stretching again, this time scaling his knees, so that his feet will touch the ground again. You can use the green line on the Blender viewport grid as a reference for where the "floor" is.
+
+<img width="1250" height="736" alt="img20_gif_touchgrass" src="https://github.com/user-attachments/assets/b57d5d3e-7cf7-467c-8223-961014d45a45" />
+
+Finally, rename Alf's toe bones to be ToeL and ToeR. They're already lined up pretty well. Toe bones aren't super important, but they're often easy to rig.
+
+<img width="1228" height="723" alt="img21_toel" src="https://github.com/user-attachments/assets/27b5fc33-ef18-4f78-8eb1-b07d9227a0ec" />
+
+With both legs done, let's start moving further up on Alf.
+
+<img width="891" height="662" alt="img22_alfhip" src="https://github.com/user-attachments/assets/64e6709d-3c82-4d9d-8470-a8c41e56e01b" />
+
+
+
