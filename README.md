@@ -529,6 +529,11 @@ Move Alf's sword-and-scabbard Meshes so that they're in roughly the same place a
 
 Rename the "AlfSword2" Mesh to tsuka_VIS_O_OBJShape, and weight it to the Vertex Group "Hilt".
 
+<img width="829" height="619" alt="img75_hilt" src="https://github.com/user-attachments/assets/855167e0-ac66-4989-bb2a-607b77b1e7c9" />
+
+
+Rename the "AlfScabbard" Mesh to "SayaM_O_OBJShape", and weight it to "Scabbard".
+
 <img width="794" height="650" alt="img76_scabbard" src="https://github.com/user-attachments/assets/0052b667-e4b7-4529-8c29-e50db1c2c8ff" />
 
 Now we're really done! Alf is all weighted! Be sure to reset the pose in Pose Mode if you haven't done so already.
